@@ -1,7 +1,9 @@
 # Docker-Web-Redirect #
 
-![Docker Build Status](https://img.shields.io/docker/build/morbz/docker-web-redirect.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/morbz/docker-web-redirect.svg) ![Docker Stars](https://img.shields.io/docker/stars/morbz/docker-web-redirect.svg)
+## Forked 
+Forked from [https://github.com/MorbZ/docker-web-redirect](https://github.com/MorbZ/docker-web-redirect) to prevent the docker image from changing unexpectedly
 
+## Intro
 This Docker container listens on port 80 and redirects all web traffic permanently to the given target domain/URL.
 
 ## Features ##
@@ -14,7 +16,7 @@ This Docker container listens on port 80 and redirects all web traffic permanent
 The target domain/URL is set by the `REDIRECT_TARGET` environment variable.  
 Possible redirect targets include domains (`mydomain.net`), paths (`mydomain.net/my_page`) or specific protocols (`https://mydomain.net/my_page`).  
 
-**Example:** `$ docker run --rm -d -e REDIRECT_TARGET=mydomain.net -p 80:80 morbz/docker-web-redirect`
+**Example:** `$ docker run --rm -d -e REDIRECT_TARGET=mydomain.net -p 80:80 willia4/docker-web-redirect`
 
 ### Paths are retained ###
 The URL path and GET parameters are retained. That means that a request to `http://myolddomain.net/index.php?page=2` will be redirected to `http://mydomain.net/index.php?page=2` when `REDIRECT_TARGET=mydomain.net` is set.
@@ -29,7 +31,7 @@ This image can be combined with the [jwilder nginx-proxy](https://hub.docker.com
 version: '3'
 services:
   redirect:
-    image: morbz/docker-web-redirect
+    image: willia4/docker-web-redirect
     restart: always
     environment:
       - VIRTUAL_HOST=myolddomain.net
